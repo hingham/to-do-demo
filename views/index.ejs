@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./layout/head') %>
+  </head>
+  <body>
+    <main>
+    <header>
+      <nav class="navigation">
+          <ul>
+            <li><a href="/">View All Tasks</a></li>
+            <li><a href="/add">Add a New Task</a></li>
+          </ul>
+        </nav>
+    </header>
+      <section class="task-view container">
+          <ul id="task-list">
+            <% results.forEach(task => { %>
+
+              <!-- <% console.log('task', task) %> -->
+
+              <li class="task-item" data-id="<%= task.id %>">
+                <h4>Task: <%= task.title %></h4>
+                <p>Completion status: <%= task.status %></p>
+
+                <!-- <a href="/tasks/<%= task.id%>"</a>View Details</a> -->
+              
+              </li>
+              <% }) %>
+
+              <!-- <a href="/tasks/kumquot">View Request Params</a> -->
+
+          </ul>
+      </section>
+    </main>
+  </body>
+</html>

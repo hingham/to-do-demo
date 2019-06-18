@@ -1,0 +1,46 @@
+// localhost:3000
+// server.js
+app.get('/', (request, respons) => {
+  let SQL = 'SELECT * from tasks;';
+  return client.query(SQL)
+    .then(results => response.render('index', {results: results.rows}))
+    .catch(handleError);
+})
+
+
+// index.ejs
+<ul id="task-list">
+    <% results.forEach(task => { %>
+
+    <li class="task-item" data-id="<%= task.id %>">
+        <h4>Task: <%= task.title %></h4>
+        <p>Completion status: <%= task.status %></p>
+        <a href="/tasks/<%= task.id%>">View Details</a>
+    </li>
+
+    <% }) %>
+</ul>
+
+
+// http://localhost:3000/tasks/1
+// detail-view.ejs 
+
+app.get('/tasks/:tasks_id', (request, response)=>{
+  let SQL = `SELECT * FROM tasks WHERE id=${request.params.task_id};`;
+  return client.query(SQL)
+    .then(result => response.render('pages/detail-view', {task: result.rows[0]}) )
+    .catch(err => handleError(err, response));
+})
+
+<ul id="task-list">
+    <li class="task-item" data-id="<%= task.id %>">
+    <h4>Task: <%= task.title %></h4>
+    <p>Desciption: <%= task.description %></p>
+    <p>Contact person: <%= task.contact %></p>
+    <p>Completion status: <%= task.status %></p>
+    <p>Category: <%= task.category %></p>
+    <p>Complete this task by <%= task.due %></p>
+    </li>
+</ul>
+
+
