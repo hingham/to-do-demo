@@ -17,19 +17,14 @@
           <ul id="task-list">
             <% results.forEach(task => { %>
 
-              <!-- <% console.log('task', task) %> -->
-
               <li class="task-item" data-id="<%= task.id %>">
+                
                 <h4>Task: <%= task.title %></h4>
                 <p>Completion status: <%= task.status %></p>
-
-                <!-- <a href="/tasks/<%= task.id%>"</a>View Details</a> -->
               
+                <a href="/tasks/<%= task.id%>"</a>View Details</a>
               </li>
-              <% }) %>
-
-              <!-- <a href="/tasks/kumquot">View Request Params</a> -->
-
+            <% }) %>
           </ul>
       </section>
     </main>

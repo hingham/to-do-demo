@@ -1,3 +1,17 @@
+index snippets:
+    <!-- <a href="/tasks/<%= task.id%>"</a>View Details</a> -->
+
+    <!-- <a href="/tasks/kumquot">View Request Params</a> -->
+
+
+server.js
+// presence of the colon makes this a param (wild card)
+app.get('/tasks/:task_id_banana/:wildcard', (req, res) =>{
+  console.log(req.params);
+});
+
+
+
 // localhost:3000
 // server.js
 app.get('/', (request, respons) => {
